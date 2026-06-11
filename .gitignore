@@ -1,0 +1,5 @@
+university-backend/node_modules/
+university-frontend/node_modules/
+university-backend/.env
+university-backend/uploads/*
+!university-backend/uploads/.gitkeep
