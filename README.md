@@ -1,13 +1,3 @@
-## `README.md` banao `ums` folder mein:
-
-```bash
-New-Item README.md
-```
-
-VS Code mein kholo aur yeh likho:
-
-```markdown
-<div align="center">
 
 # 🎓 University Management System
 
@@ -203,7 +193,8 @@ university-management-system/
 
 ---
 
-## 🚀
+## 🚀Live Demo
+https://amnashakeel-dev.github.io/ums/
 
 
 ## 🔐 Demo Credentials
@@ -331,15 +322,10 @@ STUDENT
 
 ## 📝 License
 
-This project is licensed under the MIT License.
-
----
-
-<div align="center">
+This project is licensed under the MIT Licence
 
 **Built with ❤️ using MERN Stack**
 
 ⭐ Star this repo if you found it helpful!
 
-</div>
 ``
