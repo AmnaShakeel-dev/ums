@@ -7,9 +7,12 @@ const AttendanceMarking = () => {
     const [subjects, setSubjects] = useState([]);
     const [students, setStudents] = useState([]);
     const [selectedSubject, setSelectedSubject] = useState("");
-    const [date, setDate] = useState(
-        new Date().toISOString().split("T")[0]
-    );
+    const todayDisplay = new Date().toLocaleDateString("en-US", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+    });
     const [attendance, setAttendance] = useState({});
     const [loading, setLoading] = useState(true);
     const [studentsLoading, setStudentsLoading] = useState(false);
@@ -90,7 +93,7 @@ const AttendanceMarking = () => {
 
             await teacherService.markAttendance(
                 selectedSubject,
-                date,
+                null,
                 attendanceData
             );
             showToast("Attendance saved successfully!");
@@ -158,14 +161,39 @@ const AttendanceMarking = () => {
                     </select>
                 </div>
 
-                <div style={styles.filterGroup}>
-                    <label style={styles.label}>Date</label>
-                    <input
-                        type="date"
-                        value={date}
-                        onChange={(e) => setDate(e.target.value)}
-                        style={styles.select}
-                    />
+                <div style={{ flex: 1 }}>
+                    <label style={styles.label}>Date (Today Only)</label>
+                    <div style={{
+                        ...styles.select,
+                        background: "#f1f5f9",
+                        color: "#1e293b",
+                        fontWeight: "500",
+                        display: "flex",
+                        alignItems: "center",
+                        padding: "0.5rem 0.75rem",
+                        borderRadius: "8px",
+                        border: "0.5px solid #e2e8f0",
+                    }}>
+                        &#x1F4C5; {todayDisplay}
+                    </div>
+                    {students.length > 0 && (
+                        <div style={{
+                            background: "#fef3c7",
+                            border: "0.5px solid #fcd34d",
+                            borderRadius: "8px",
+                            padding: "10px 14px",
+                            fontSize: "12px",
+                            color: "#92400e",
+                            marginBottom: "1rem",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "8px",
+                        }}>
+                            &#x26A0;&#xFE0F;
+                            <strong>Warning:</strong> Once you save today's attendance, it cannot be edited or changed.
+                            Please review carefully before saving.
+                        </div>
+                    )}
                 </div>
             </div>
 
@@ -310,9 +338,11 @@ const AttendanceMarking = () => {
                                                                 : "400",
                                                     }}
                                                 >
+
                                                     {status.charAt(0).toUpperCase() +
                                                         status.slice(1)}
                                                 </button>
+
                                             ))}
                                         </div>
                                     </td>

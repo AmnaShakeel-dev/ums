@@ -83,19 +83,24 @@ const getEnrolledStudents = async (req, res) => {
 // @access  Teacher only
 const markAttendance = async (req, res) => {
     try {
-        const { subjectId, date, attendanceData } = req.body;
+        const { subjectId, attendanceData } = req.body;
 
-        // attendanceData = [{ studentId, status }, ...]
-
-        if (!subjectId || !date || !attendanceData || attendanceData.length === 0) {
+        if (!subjectId || !attendanceData || attendanceData.length === 0) {
             return res.status(400).json({
                 success: false,
-                message: "Please provide subject, date and attendance data.",
+                message: "Please provide subject and attendance data.",
             });
         }
 
-        const subject = await Subject.findById(subjectId);
+        // ── FIX 2A: Force date to TODAY only ────────────────────────
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);           // midnight — date-only comparison
 
+        const todayEnd = new Date(today);
+        todayEnd.setHours(23, 59, 59, 999);   // end of today
+        // ──────────────────────────────────────────────────────────────
+
+        const subject = await Subject.findById(subjectId);
         if (!subject) {
             return res.status(404).json({
                 success: false,
@@ -110,33 +115,44 @@ const markAttendance = async (req, res) => {
             });
         }
 
-        // Har student ki attendance save karo
-        const attendancePromises = attendanceData.map(async (item) => {
-            return await Attendance.findOneAndUpdate(
-                {
-                    student: item.studentId,
-                    subject: subjectId,
-                    date: new Date(date),
-                },
-                {
-                    student: item.studentId,
-                    subject: subjectId,
-                    date: new Date(date),
-                    status: item.status,
-                    markedBy: req.user.id,
-                },
-                { upsert: true, new: true }
-            );
+        // ── FIX 2B: Check if attendance already exists for today ─────
+        const alreadyMarked = await Attendance.findOne({
+            subject: subjectId,
+            date: { $gte: today, $lte: todayEnd },
         });
 
-        await Promise.all(attendancePromises);
+        if (alreadyMarked) {
+            return res.status(400).json({
+                success: false,
+                message: "Attendance for today has already been marked for this subject. It cannot be changed.",
+            });
+        }
+        // ──────────────────────────────────────────────────────────────
+
+        // Save attendance for each student — insertMany for atomicity
+        const docs = attendanceData.map((item) => ({
+            student: item.studentId,
+            subject: subjectId,
+            date: today,           // always TODAY, ignore any client-sent date
+            status: item.status,
+            markedBy: req.user.id,
+        }));
+
+        await Attendance.insertMany(docs);
 
         res.status(200).json({
             success: true,
-            message: "Attendance marked successfully.",
+            message: `Attendance for ${today.toDateString()} marked successfully. It is now locked.`,
         });
 
     } catch (error) {
+        // Handle duplicate key error from unique index (extra safety)
+        if (error.code === 11000) {
+            return res.status(400).json({
+                success: false,
+                message: "Attendance for today has already been marked. It cannot be changed.",
+            });
+        }
         console.error("Mark attendance error:", error);
         res.status(500).json({
             success: false,

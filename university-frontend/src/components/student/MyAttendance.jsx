@@ -263,6 +263,7 @@ const MyAttendance = () => {
                                         bg: "#f1f5f9",
                                         color: "#475569",
                                     },
+
                                 ].map((stat) => (
                                     <div
                                         key={stat.label}

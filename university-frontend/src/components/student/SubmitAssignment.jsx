@@ -180,7 +180,7 @@ const SubmitAssignment = () => {
                                         ? "rgba(255,255,255,0.2)"
                                         : "#f1f5f9",
                                 color:
-                                    filter === tab.key ? "#fff" : "#64748b",
+                                    filter === tab.key ? "#ffffff" : "#64748b",
                             }}
                         >
                             {counts[tab.key]}
@@ -518,7 +518,7 @@ const styles = {
         padding: "10px 14px",
         background: "#f0fdf4",
         borderRadius: "8px",
-        border: "0.5px solid #86efac",
+        border: "0.5px solid #86efa",
     },
     gradeRow: {
         display: "flex",

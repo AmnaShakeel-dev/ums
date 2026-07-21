@@ -226,32 +226,191 @@ const StudentProfile = () => {
 };
 
 const styles = {
-    pageHeader: { marginBottom: "1.5rem" },
-    pageTitle: { fontSize: "22px", fontWeight: "600", color: "#1e293b", margin: 0 },
-    pageSubtitle: { fontSize: "13px", color: "#64748b", marginTop: "4px" },
-    profileGrid: { display: "grid", gridTemplateColumns: "280px 1fr", gap: "16px", alignItems: "start" },
-    avatarCard: { background: "#fff", borderRadius: "12px", border: "0.5px solid #e2e8f0", padding: "2rem 1.5rem", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" },
-    avatarCircle: { width: "80px", height: "80px", borderRadius: "50%", background: "#2563eb", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "28px", fontWeight: "700", marginBottom: "8px" },
-    profileName: { fontSize: "18px", fontWeight: "600", color: "#1e293b", margin: 0 },
-    roleBadge: { background: "#dbeafe", color: "#1e40af", padding: "4px 14px", borderRadius: "99px", fontSize: "12px", fontWeight: "600" },
-    profileDept: { fontSize: "13px", color: "#64748b", margin: 0 },
-    avatarActions: { display: "flex", flexDirection: "column", gap: "8px", width: "100%", marginTop: "8px" },
-    editBtn: { width: "100%", padding: "9px", background: "#eff6ff", color: "#2563eb", border: "0.5px solid #bfdbfe", borderRadius: "8px", fontSize: "13px", fontWeight: "500", cursor: "pointer" },
-    passwordBtn: { width: "100%", padding: "9px", background: "#f0fdf4", color: "#15803d", border: "0.5px solid #86efac", borderRadius: "8px", fontSize: "13px", fontWeight: "500", cursor: "pointer" },
-    infoCard: { background: "#fff", borderRadius: "12px", border: "0.5px solid #e2e8f0", overflow: "hidden" },
-    infoHeader: { padding: "1rem 1.5rem", borderBottom: "0.5px solid #e2e8f0", background: "#f8fafc" },
-    infoTitle: { fontSize: "15px", fontWeight: "600", color: "#1e293b", margin: 0 },
-    infoGrid: { padding: "1rem 1.5rem", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0" },
-    infoItem: { padding: "1rem 0", borderBottom: "0.5px solid #f1f5f9" },
-    infoLabel: { display: "flex", alignItems: "center", gap: "6px", fontSize: "11px", fontWeight: "600", color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.5px", marginBottom: "4px" },
-    infoValue: { fontSize: "14px", fontWeight: "500", color: "#1e293b" },
-    formGroup: { marginBottom: "1rem" },
-    label: { display: "block", fontSize: "12px", fontWeight: "600", color: "#475569", marginBottom: "5px", textTransform: "uppercase", letterSpacing: "0.5px" },
-    input: { width: "100%", padding: "9px 12px", border: "0.5px solid #e2e8f0", borderRadius: "8px", fontSize: "13px", outline: "none", boxSizing: "border-box", background: "#fff", color: "#1e293b" },
-    passwordHint: { fontSize: "12px", color: "#94a3b8", marginBottom: "1rem" },
-    modalActions: { display: "flex", gap: "8px", justifyContent: "flex-end", marginTop: "1.25rem" },
-    cancelBtn: { padding: "8px 16px", background: "transparent", border: "0.5px solid #e2e8f0", borderRadius: "8px", fontSize: "13px", cursor: "pointer", color: "#374151" },
-    submitBtn: { padding: "8px 16px", color: "#fff", border: "none", borderRadius: "8px", fontSize: "13px", fontWeight: "500" },
+    pageHeader: {
+        marginBottom: "1.5rem"
+    },
+    pageTitle: {
+        fontSize: "22px",
+        fontWeight: "600", color: "#1e293b",
+        margin: 0
+    },
+    pageSubtitle: {
+        fontSize: "13px",
+        color: "#64748b",
+        marginTop: "4px"
+    },
+    profileGrid: {
+        display: "grid",
+        gridTemplateColumns: "280px 1fr",
+        gap: "16px",
+        alignItems: "start"
+    },
+    avatarCard: {
+        background: "#fff",
+        borderRadius: "12px",
+        border: "0.5px solid #e2e8f0",
+        padding: "2rem 1.5rem",
+        textAlign: "center",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "10px"
+    },
+    avatarCircle: {
+        width: "80px",
+        height: "80px",
+        borderRadius: "50%",
+        background: "#2563eb",
+        color: "#ffffff",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontSize: "28px",
+        fontWeight: "700",
+        marginBottom: "8px"
+    },
+    profileName: {
+        fontSize: "18px",
+        fontWeight: "600",
+        color: "#1e293b",
+        margin: 0
+    },
+    roleBadge: {
+        background: "#dbeafe",
+        color: "#1e40af",
+        padding: "4px 14px",
+        borderRadius: "99px",
+        fontSize: "12px",
+        fontWeight: "600"
+    },
+    profileDept: {
+        fontSize: "13px",
+        color: "#64748b",
+        margin: 0
+    },
+    avatarActions: {
+        display: "flex",
+        flexDirection: "column",
+        gap: "8px",
+        width: "100%",
+        marginTop: "8px"
+    },
+    editBtn: {
+        width: "100%",
+        padding: "9px",
+        background: "#eff6ff",
+        color: "#2563eb",
+        border: "0.5px solid #bfdbfe",
+        borderRadius: "8px",
+        fontSize: "13px",
+        fontWeight: "500",
+        cursor: "pointer"
+    },
+    passwordBtn: {
+        width: "100%",
+        padding: "9px",
+        background: "#f0fdf4",
+        color: "#15803d",
+        border: "0.5px solid #86efac",
+        borderRadius: "8px",
+        fontSize: "13px",
+        fontWeight: "500",
+        cursor: "pointer"
+    },
+    infoCard: {
+        background: "#fff",
+        borderRadius: "12px",
+        border: "0.5px solid #e2e8f0",
+        overflow: "hidden"
+    },
+    infoHeader: {
+        padding: "1rem 1.5rem",
+        borderBottom: "0.5px solid #e2e8f0",
+        background: "#f8fafc"
+    },
+    infoTitle: {
+        fontSize: "15px",
+        fontWeight: "600",
+        color: "#1e293b",
+        margin: 0
+    },
+    infoGrid: {
+        padding: "1rem 1.5rem",
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gap: "0"
+    },
+    infoItem: {
+        padding: "1rem 0",
+        borderBottom: "0.5px solid #f1f5f9"
+    },
+    infoLabel: {
+        display: "flex",
+        alignItems: "center",
+        gap: "6px",
+        fontSize: "11px",
+        fontWeight: "600",
+        color: "#94a3b8",
+        textTransform: "uppercase",
+        letterSpacing: "0.5px",
+        marginBottom: "4px"
+    },
+    infoValue: {
+        fontSize: "14px",
+        fontWeight: "500",
+        color: "#1e293b"
+    },
+    formGroup: {
+        marginBottom: "1rem"
+    },
+    label: {
+        display: "block",
+        fontSize: "12px",
+        fontWeight: "600",
+        color: "#475569",
+        marginBottom: "5px",
+        textTransform: "uppercase",
+        letterSpacing: "0.5px"
+    },
+    input: {
+        width: "100%",
+        padding: "9px 12px",
+        border: "0.5px solid #e2e8f0",
+        borderRadius: "8px",
+        fontSize: "13px",
+        outline: "none",
+        boxSizing: "border-box",
+        background: "#fff",
+        color: "#1e293b"
+    },
+    passwordHint: {
+        fontSize: "12px",
+        color: "#94a3b8",
+        marginBottom: "1rem"
+    },
+    modalActions: {
+        display: "flex",
+        gap: "8px",
+        justifyContent: "flex-end",
+        marginTop: "1.25rem"
+    },
+    cancelBtn: {
+        padding: "8px 16px",
+        background: "transparent",
+        border: "0.5px solid #e2e8f0",
+        borderRadius: "8px",
+        fontSize: "13px",
+        cursor: "pointer",
+        color: "#374151"
+    },
+    submitBtn: {
+        padding: "8px 16px",
+        color: "#fff",
+        border: "none",
+        borderRadius: "8px",
+        fontSize: "13px",
+        fontWeight: "500"
+    },
 };
 
 export default StudentProfile;

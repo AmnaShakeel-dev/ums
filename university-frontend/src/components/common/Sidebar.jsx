@@ -75,6 +75,7 @@ const Sidebar = () => {
                 </div>
             </div>
 
+
             {/* Navigation Links */}
             <nav style={styles.nav}>
                 <div style={styles.navLabel}>MENU</div>
@@ -88,7 +89,7 @@ const Sidebar = () => {
                             color: isActive ? "#93c5fd" : "#94a3b8",
                             fontWeight: isActive ? "600" : "400",
                             borderLeft: isActive
-                                ? "3px solid #3b82f6"
+                                ? "3px solid #3b83f64a"
                                 : "3px solid transparent",
                         })}
                     >

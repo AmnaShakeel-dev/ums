@@ -135,7 +135,7 @@ const getUser = async (req, res) => {
 // @access  Admin only
 const updateUser = async (req, res) => {
     try {
-        const { name, email, role, department, phone } = req.body;
+        const { name, email, department, phone } = req.body;
 
         const user = await User.findById(req.params.id);
 
@@ -146,20 +146,31 @@ const updateUser = async (req, res) => {
             });
         }
 
-        // Email change ho rahi hai to check karo duplicate na ho
-        if (email && email !== user.email) {
-            const existingUser = await User.findOne({ email: email.toLowerCase() });
+        // Role change is permanently disabled
+        // Once a user is created with a role, it cannot be changed
+        if (req.body.role && req.body.role !== user.role) {
+            return res.status(400).json({
+                success: false,
+                message: `Role cannot be changed. This user was created as '${user.role}' and must remain so. Delete and recreate the account if a different role is needed.`,
+            });
+        }
+
+        // Email duplicate check
+        if (email && email.toLowerCase() !== user.email) {
+            const existingUser = await User.findOne({
+                email: email.toLowerCase(),
+            });
             if (existingUser) {
                 return res.status(400).json({
                     success: false,
-                    message: "Email already in use.",
+                    message: "Email already in use by another account.",
                 });
             }
         }
 
+        // Only allow safe fields to be updated
         user.name = name || user.name;
-        user.email = email || user.email;
-        user.role = role || user.role;
+        user.email = email ? email.toLowerCase() : user.email;
         user.department = department || user.department;
         user.phone = phone || user.phone;
 
@@ -167,7 +178,7 @@ const updateUser = async (req, res) => {
 
         res.status(200).json({
             success: true,
-            message: "User updated successfully.",
+            message: "User updated successfully. Role remains unchanged.",
             user: {
                 id: user._id,
                 name: user.name,

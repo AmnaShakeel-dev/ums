@@ -114,21 +114,100 @@ const AttendanceCalendar = ({ records, subjectName }) => {
 };
 
 const styles = {
-    calendarContainer: { background: "#fff", borderRadius: "12px", border: "0.5px solid #e2e8f0", padding: "1.25rem" },
-    calendarHeader: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" },
-    navBtn: { background: "#f1f5f9", border: "0.5px solid #e2e8f0", borderRadius: "6px", padding: "4px 10px", cursor: "pointer", fontSize: "14px", color: "#475569" },
-    monthTitle: { fontSize: "15px", fontWeight: "600", color: "#1e293b", margin: 0 },
-    subjectLabel: { fontSize: "12px", color: "#64748b", marginBottom: "12px", textAlign: "center" },
-    weekDaysRow: { display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: "4px", marginBottom: "4px" },
-    weekDay: { textAlign: "center", fontSize: "11px", fontWeight: "600", color: "#94a3b8", padding: "4px 0" },
-    daysGrid: { display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: "4px" },
+    calendarContainer: {
+        background: "#fff",
+        borderRadius: "12px",
+        border: "0.5px solid #e2e8f0",
+        padding: "1.25rem"
+    },
+    calendarHeader: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        marginBottom: "12px"
+    },
+    navBtn: {
+        background: "#f1f5f9",
+        border: "0.5px solid #e2e8f0",
+        borderRadius: "6px",
+        padding: "4px 10px",
+        cursor: "pointer",
+        fontSize: "14px",
+        color: "#475569"
+    },
+    monthTitle: {
+        fontSize: "15px",
+        fontWeight: "600",
+        color: "#1e293b",
+        margin: 0
+    },
+    subjectLabel: {
+        fontSize: "12px",
+        color: "#64748b",
+        marginBottom: "12px",
+        textAlign: "center"
+    },
+    weekDaysRow: {
+        display: "grid",
+        gridTemplateColumns: "repeat(7, 1fr)",
+        gap: "4px",
+        marginBottom: "4px"
+    },
+    weekDay: {
+        textAlign: "center",
+        fontSize: "11px",
+        fontWeight: "600",
+        color: "#94a3b8",
+        padding: "4px 0"
+    },
+    daysGrid: {
+        display: "grid",
+        gridTemplateColumns: "repeat(7, 1fr)",
+        gap: "4px"
+    },
     emptyDay: { height: "36px" },
-    dayCell: { height: "36px", borderRadius: "6px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontSize: "12px", cursor: "default", position: "relative" },
-    statusDot: { fontSize: "8px", lineHeight: 1 },
-    legend: { display: "flex", gap: "12px", justifyContent: "center", marginTop: "12px", paddingTop: "12px", borderTop: "0.5px solid #f1f5f9" },
-    legendItem: { display: "flex", alignItems: "center", gap: "4px" },
-    legendDot: { width: "18px", height: "18px", borderRadius: "4px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "9px", fontWeight: "600" },
-    legendLabel: { fontSize: "11px", color: "#64748b" },
+    dayCell: {
+        height: "36px",
+        borderRadius: "6px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        fontSize: "12px",
+        cursor: "default",
+        position: "relative"
+    },
+    statusDot: {
+        fontSize: "8px",
+        lineHeight: 1
+    },
+    legend: {
+        display: "flex",
+        gap: "12px",
+        justifyContent: "center",
+        marginTop: "12px",
+        paddingTop: "12px",
+        borderTop: "0.5px solid #f1f5f9"
+    },
+    legendItem: {
+        display: "flex",
+        alignItems: "center",
+        gap: "4px"
+    },
+    legendDot: {
+        width: "18px",
+        height: "18px",
+        borderRadius: "4px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontSize: "9px",
+        fontWeight: "600"
+    },
+    legendLabel: {
+        fontSize: "11px",
+        color: "#64748b"
+    },
 };
 
 export default AttendanceCalendar;
