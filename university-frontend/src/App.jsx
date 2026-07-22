@@ -19,6 +19,8 @@ import LectureUpload from "./components/teacher/LectureUpload";
 import AssignmentManagement from "./components/teacher/AssignmentManagement";
 import GradingPanel from "./components/teacher/GradingPanel";
 import TeacherAnnouncements from "./components/teacher/TeacherAnnouncements";
+import TeacherGrades from "./components/teacher/TeacherGrades";
+import StudentGrades from "./components/student/StudentGrades";
 // Student Components
 import StudentDashboard from "./components/student/StudentDashboard";
 import MySubjects from "./components/student/MySubjects";
@@ -182,6 +184,11 @@ const AppRoutes = () => {
           </DashboardLayout>
         </ProtectedRoute>
       } />
+      <Route path="/teacher/grades" element={
+        <ProtectedRoute allowedRoles={["teacher"]}>
+          <DashboardLayout><TeacherGrades /></DashboardLayout>
+        </ProtectedRoute>
+      } />
 
       {/* Student Routes */}
       <Route path="/student/dashboard" element={
@@ -229,6 +236,11 @@ const AppRoutes = () => {
           <DashboardLayout>
             <StudentProfile />
           </DashboardLayout>
+        </ProtectedRoute>
+      } />
+      <Route path="/student/grades" element={
+        <ProtectedRoute allowedRoles={["student"]}>
+          <DashboardLayout><StudentGrades /></DashboardLayout>
         </ProtectedRoute>
       } />
 

@@ -45,6 +45,21 @@ const userSchema = new mongoose.Schema(
             trim: true,
             default: "",
         },
+        rollNumber: {
+            type: String,
+            trim: true,
+            default: ""
+        },
+        registrationNumber: {
+            type: String,
+            trim: true,
+            default: ""
+        },
+        semester: {
+            type: String,
+            trim: true,
+            default: ""
+        },
     },
     {
         timestamps: true,

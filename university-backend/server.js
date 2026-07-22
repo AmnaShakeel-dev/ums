@@ -46,7 +46,9 @@ const adminRoutes = require("./routes/adminRoutes");
 const teacherRoutes = require("./routes/teacherRoutes");
 const studentRoutes = require("./routes/studentRoutes");
 const announcementRoutes = require("./routes/announcementRoutes");
+const gradeRoutes = require("./routes/gradeRoutes");
 
+app.use("/api/grades", gradeRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/teacher", teacherRoutes);

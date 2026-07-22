@@ -16,6 +16,7 @@ const teacherLinks = [
     { path: "/teacher/assignments", label: "Assignments", icon: "📝" },
     { path: "/teacher/grading", label: "Grading", icon: "⭐" },
     { path: "/teacher/announcements", label: "Announcements", icon: "📢" },
+    { path: "/teacher/grades", label: "Grades", icon: "⭐" },
 ];
 
 const studentLinks = [
@@ -24,6 +25,7 @@ const studentLinks = [
     { path: "/student/subjects", label: "My Subjects", icon: "📚" },
     { path: "/student/assignments", label: "Assignments", icon: "📝" },
     { path: "/student/attendance", label: "My Attendance", icon: "📊" },
+    { path: "/student/grades", label: "My Grades", icon: "🏆" },
 ];
 
 const Sidebar = () => {
